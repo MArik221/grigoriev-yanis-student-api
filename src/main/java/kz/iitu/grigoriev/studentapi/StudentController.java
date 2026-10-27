@@ -40,6 +40,20 @@ public class StudentController {
     @GetMapping("/api/students/{id}")
     public Student one(@PathVariable Long id) { return findOr404(id); }
 
+    // Improved CRUD feature: validated full update with duplicate student-number prevention.
+    @PutMapping("/api/students/{id}")
+    public Student update(@PathVariable Long id, @Valid @RequestBody StudentRequest request) {
+        Student student = findOr404(id);
+        if (repository.existsByStudentNumberAndIdNot(request.studentNumber(), id)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Student number already exists");
+        }
+        student.setName(request.name());
+        student.setSurname(request.surname());
+        student.setGroupCode(request.groupCode());
+        student.setStudentNumber(request.studentNumber());
+        return repository.save(student);
+    }
+
     @DeleteMapping("/api/students/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
