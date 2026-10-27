@@ -21,6 +21,7 @@ The local `.env` contains a randomly generated database password. It must not be
 - `POST /api/students` — create
 - `GET /api/students` — list
 - `GET /api/students/{id}` — one
+- `PUT /api/students/{id}` — validated full update (CRUD feature)
 - `DELETE /api/students/{id}` — delete
 
 ## Local Java build
