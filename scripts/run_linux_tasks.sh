@@ -5,7 +5,7 @@ chmod 744 scripts/Grigoriev_Yanis_system_report.sh
 : > logs/Grigoriev_Yanis_system_report.log
 ./scripts/Grigoriev_Yanis_system_report.sh
 cp README.md backups/Grigoriev_Yanis_README_backup.md
-ps aux | head -n 8
+ps aux | sed -n '1,8p'
 pgrep -af java || true
 tail -n 5 logs/Grigoriev_Yanis_system_report.log
 grep 'Grigoriev' logs/Grigoriev_Yanis_system_report.log > Grigoriev_Yanis_log_analysis.txt

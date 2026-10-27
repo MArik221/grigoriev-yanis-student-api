@@ -30,4 +30,4 @@ The local `.env` contains a randomly generated database password. It must not be
 ```
 First run downloads the verified official Gradle Wrapper JAR and Gradle distribution.
 
-For every midterm requirement, see `RUNBOOK_RU.md`.
+For every midterm requirement, including real Git conflict history and safe Jenkins failure demo, see [`RUNBOOK_RU.md`](RUNBOOK_RU.md).

@@ -53,7 +53,7 @@ class StudentControllerTest {
         mvc.perform(get("/api/students/{id}", id)).andExpect(status().isNotFound());
     }
 
-    @Test void updateStudentAndPreventDuplicate() throws Exception {
+    @Test void updateStudent() throws Exception {
         String first = mvc.perform(post("/api/students")
             .contentType(MediaType.APPLICATION_JSON).content(STUDENT))
             .andExpect(status().isCreated()).andReturn().getResponse().getContentAsString();
@@ -65,9 +65,18 @@ class StudentControllerTest {
         mvc.perform(get("/api/students/{id}", id)).andExpect(status().isOk());
     }
 
+    @Test void duplicateStudentNumberReturns409() throws Exception {
+        mvc.perform(post("/api/students")
+            .contentType(MediaType.APPLICATION_JSON).content(STUDENT))
+            .andExpect(status().isCreated());
+        mvc.perform(post("/api/students")
+            .contentType(MediaType.APPLICATION_JSON).content(STUDENT))
+            .andExpect(status().isConflict());
+    }
+
     @Test void invalidStudentReturns400() throws Exception {
         mvc.perform(post("/api/students").contentType(MediaType.APPLICATION_JSON)
-            .content("{"name":"","surname":"Grigoriev","groupCode":"IT22303","studentNumber":"37038"}"))
+            .content("{\"name\":\"\",\"surname\":\"Grigoriev\",\"groupCode\":\"IT22303\",\"studentNumber\":\"37038\"}"))
             .andExpect(status().isBadRequest());
     }
 
