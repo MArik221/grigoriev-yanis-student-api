@@ -2,7 +2,7 @@
 
 Student: **Grigoriev Yanis** | Group: **IT22303** | ID: **37038**
 
-Project status: Main branch — CRUD and integration tests ready.
+Project status: Tested Spring Boot CRUD API, with complete project documentation and PostgreSQL. 
 
 ## Technologies
 Spring Boot 3.5.x, Java 21, Gradle 8.14.3, Spring Data JPA, PostgreSQL, Docker Compose, Jenkins.
