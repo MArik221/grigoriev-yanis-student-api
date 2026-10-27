@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh './gradlew --no-daemon test'
+                sh 'DEMO_FAIL_PIPELINE=1 ./gradlew --no-daemon test'
             }
         }
         stage('Docker Build') {
