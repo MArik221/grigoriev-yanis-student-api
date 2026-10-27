@@ -255,3 +255,16 @@ CI = автоматическая сборка и тесты изменений,
 - Jenkins: Job name, исходный GitHub URL, пять stages, успешный build, failed build и fixed build, история автозапуска после коммита.
 
 **Не выдавать проектные файлы или тестовый вывод за скриншоты реального Jenkins/Docker без их запуска.**
+
+## 10. Повтор команд в терминале (дополнительно)
+
+```bash
+mkdir -p ~/midterm_recording
+cd ~/midterm_recording
+script --log-timing timing.log session.log
+# внутри записи: cd к проекту, команды Linux/Git/Docker из разделов выше
+exit
+scriptreplay --log-timing timing.log session.log
+```
+
+`scriptreplay` показывает ранее сохранённый вывод, но не запускает команды повторно.
